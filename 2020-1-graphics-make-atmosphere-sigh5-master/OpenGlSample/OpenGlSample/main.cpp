@@ -51,8 +51,6 @@ int main(void)
 
 		}
 		
-
-
 	cube->shutDown();
 	sphere->shutDown();
 	

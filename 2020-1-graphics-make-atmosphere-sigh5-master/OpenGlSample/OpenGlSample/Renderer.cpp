@@ -204,6 +204,8 @@ void Renderer::draw()
 
 void Renderer::shutDown()
 {
+	
+	
 	glfwTerminate();
 }
 

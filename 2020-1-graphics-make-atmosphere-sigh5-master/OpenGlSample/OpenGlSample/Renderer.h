@@ -34,14 +34,11 @@ public:
 	void renderdown();
 
 public:
-	void renderer(RenderingObject* _object);  //ㅇ젠 드로우함수에서 다쓸려고 
-
-public:
 	virtual void shutDown()override;
 	virtual void setXYZ(float x, float y, float z)override; 
 	virtual void Update(IUpdate *iupdate)override;
 
 
 private :
-
+	void renderer(RenderingObject* _object);  //ㅇ젠 드로우함수에서 다쓸려고 
 };
