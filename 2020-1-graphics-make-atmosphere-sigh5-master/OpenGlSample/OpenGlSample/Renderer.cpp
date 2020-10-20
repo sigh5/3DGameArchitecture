@@ -106,8 +106,6 @@ glm::mat4 Renderer::getMatrixTranslatePosition(glm::mat4 Model, RenderingObject 
 
 void Renderer::renderer(RenderingObject* _object)
 {
-	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 	glUseProgram(_object->programID);
 
 	glActiveTexture(GL_TEXTURE0);
@@ -140,7 +138,7 @@ void Renderer::renderer(RenderingObject* _object)
 		(void*)0
 	);
 
-	
+
 	glBindBuffer(GL_ARRAY_BUFFER, _object->normalbuffer);
 	glVertexAttribPointer(
 		2,
@@ -155,7 +153,7 @@ void Renderer::renderer(RenderingObject* _object)
 
 	glm::mat4 ViewMatrix = getCameraPosition();
 	glm::mat4 ModelMatrix = glm::mat4(1.0);
-	
+
 	ModelMatrix = getMatrixTranslatePosition(ModelMatrix, _object);
 
 	glm::mat4 MVP = ProjectionMatrix * ViewMatrix*ModelMatrix;
@@ -167,14 +165,8 @@ void Renderer::renderer(RenderingObject* _object)
 	glDisableVertexAttribArray(0);
 	glDisableVertexAttribArray(1);
 	glDisableVertexAttribArray(2);
-	
-
-	//VertexÁ¤º¸
 
 
-
-	//glfwSwapBuffers(window);
-	//glfwPollEvents();
 }
 
 
@@ -183,8 +175,6 @@ void Renderer::Update(IUpdate *iupdate)
 {
 
 }
-
-
 
 void Renderer::addObject(RenderingObject *_object)
 {
@@ -200,11 +190,19 @@ void Renderer::draw()
 	
 }
 
+void Renderer::objectShutdown(RenderingObject *_obj)
+{
+	_obj->shutDown();
+}
+
 
 
 void Renderer::shutDown()
 {
-	
+	for (int i = 0; i < objects.size(); i++)
+	{
+		objectShutdown(objects[i]);
+	}
 	
 	glfwTerminate();
 }

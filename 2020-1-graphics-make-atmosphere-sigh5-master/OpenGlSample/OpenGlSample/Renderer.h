@@ -32,6 +32,8 @@ public:
 	void draw();
 	void renderup();
 	void renderdown();
+	void objectShutdown(RenderingObject*_obj);
+
 
 public:
 	virtual void shutDown()override;

@@ -32,7 +32,7 @@ int main(void)
 );
 
 	cube->setXYZ(10.0f,5.0f,0.0f); //¸ðµ¨ÀÇ À§Ä¡ÀÌµ¿
-	renderer->addObject(cube);
+	renderer->addObject(cube);  
 	
 	Sphere *sphere = new Sphere();
 	sphere->setXYZ(0.0f, 2.0f, 1.0f); //¸ðµ¨ ÁÂÇ¥ÀÌµ¿
@@ -48,16 +48,11 @@ int main(void)
 		renderer->draw();
 		renderer->Update(non_render_obj);
 		renderer->renderdown();
-
+		
 		}
 		
-	cube->shutDown();
-	sphere->shutDown();
-	
 	renderer->shutDown();
 	
-
-
 	delete sphere;
 	delete cube;
 	return 0;
