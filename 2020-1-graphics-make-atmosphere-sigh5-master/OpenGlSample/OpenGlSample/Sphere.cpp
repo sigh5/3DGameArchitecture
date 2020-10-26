@@ -23,6 +23,8 @@ void Sphere::setXYZ(float x, float y, float z)
 
 Sphere::Sphere()
 {
+	FileManager *_loadData = FileManager::instance();
+
 	programID= _loadData->LoadShaders("20161677_황현욱_vs.shader", "20161677_황현욱_fs.shader");
 	MatrixID = glGetUniformLocation(programID, "MVP");
 	Texture = _loadData->loadBMP("star.bmp");

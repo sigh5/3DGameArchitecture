@@ -369,6 +369,7 @@
     <ClInclude Include="include\GL\glew.h" />
     <ClInclude Include="include\GL\glxew.h" />
     <ClInclude Include="include\GL\wglew.h" />
+    <ClInclude Include="InputKey.h" />
     <ClInclude Include="ISetPosition.h" />
     <ClInclude Include="IUpdate.h" />
     <ClInclude Include="NonRenderingObject.h" />
@@ -523,6 +524,7 @@
     <None Include="human_vs.shader" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="InputKey.cpp" />
     <ClCompile Include="main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>

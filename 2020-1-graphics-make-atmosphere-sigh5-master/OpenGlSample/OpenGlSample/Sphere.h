@@ -1,3 +1,4 @@
+#pragma once
 #include "RenderingObject.h"
 
 class RenderingObject;
@@ -7,8 +8,7 @@ class Sphere :public RenderingObject {
 
 
 private:
-	FileManager *_loadData;
-
+	
 public:
 	Sphere();
 	

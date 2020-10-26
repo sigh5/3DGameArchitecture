@@ -1,8 +1,15 @@
+#pragma once
+
 #include <string>
 #include <vector>
-
+#include "include/GL/glew.h"		
+#include "include/GLFW/glfw3.h" 
+#include "glm/gtc/matrix_transform.hpp"
 #include "glm/glm.hpp"
 
+#pragma comment(lib, "OpenGL32.lib")
+#pragma comment(lib, "lib-vc2017/glew32.lib")
+#pragma comment(lib, "lib-vc2017/glfw3.lib")
 
 class Object;
 class RenderingObject;

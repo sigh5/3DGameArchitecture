@@ -9,14 +9,11 @@
 #include "glm/gtc/matrix_transform.hpp"
 #include "include/GL/glew.h"
 #include "include/GLFW/glfw3.h" 
+#include "InputKey.h"
 
-
-
-GLFWwindow* window;
 
 void Renderer::init()
 {
-
 	if (!glfwInit())
 	{
 		fprintf(stderr, "Failed to initialize GLFW\n");
@@ -30,8 +27,8 @@ void Renderer::init()
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	window = glfwCreateWindow(1024, 768, "Graphics_FinalTest_20161651", NULL, NULL);
-	
+	window = glfwCreateWindow(1024, 768, "20161677MiddleTest", NULL, NULL);
+
 	if (window == NULL) {
 		fprintf(stderr, "Failed to open GLFW window. If you have an Intel GPU, they are not 3.3 compatible. Try the 2.1 version of the tutorials.\n");
 		getchar();
@@ -45,24 +42,17 @@ void Renderer::init()
 		fprintf(stderr, "Failed to initialize GLEW\n");
 		getchar();
 		glfwTerminate();
-		return ;
+		return;
 	}
 
 	glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
-
 	glfwPollEvents();
 	glfwSetCursorPos(window, 1024 / 2, 768 / 2);
-
-	glClearColor(0.0f, 0.5f, 0.0f, 0.0f);
-
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	glEnable(GL_DEPTH_TEST);
-
 	glDepthFunc(GL_LESS);
-
 	glEnable(GL_CULL_FACE);
-
 }
-
 
 void Renderer::setXYZ(float x, float y, float z)
 {
@@ -79,12 +69,14 @@ glm::mat4 Renderer::getCameraPosition() const
 	a = _camera_a;
 	b = _camera_b;
 	c = _camera_c;
+   
+	
 
 	glm::mat4 SunViewMatrix = glm::lookAt(
-			glm::vec3(a, b, c),
-			glm::vec3(0, 0, 0),
-			glm::vec3(0, 1, 0)
-		);
+		glm::vec3(a, b, c),
+		glm::vec3(0, 0, 0),
+		glm::vec3(0, 0, 0)
+	);
 
 	return SunViewMatrix;
 }
@@ -98,16 +90,24 @@ glm::mat4 Renderer::getMatrixTranslatePosition(glm::mat4 Model, RenderingObject 
 	c = obj->_Obj1PositionZ;
 
 	Model = glm::translate(Model, glm::vec3(a, b, c));
-
 	return Model;
 }
-
-
 
 void Renderer::renderer(RenderingObject* _object)
 {
 	glUseProgram(_object->programID);
 
+	InputKey::GetInstance()->KeyBoard();
+	InputKey::GetInstance()->setMousepos();
+	
+	glm::mat4 ProjectionMatrix = InputKey::GetInstance()->getProjectionMatrix();
+	glm::mat4 ViewMatrix = InputKey::GetInstance()->getViewMatrix();
+	glm::mat4 ModelMatrix = glm::mat4(1.0);
+
+	ModelMatrix = getMatrixTranslatePosition(ModelMatrix, _object);
+	glm::mat4 MVP = ProjectionMatrix * ViewMatrix*ModelMatrix;
+	
+	glUniformMatrix4fv(_object->MatrixID, 1, GL_FALSE, &MVP[0][0]);
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, _object->Texture);
 	glUniform1i(_object->TextureID, 0);
@@ -125,9 +125,6 @@ void Renderer::renderer(RenderingObject* _object)
 		0,
 		(void*)0
 	);
-
-	//UVÁ¤º¸
-
 	glBindBuffer(GL_ARRAY_BUFFER, _object->uvbuffer);
 	glVertexAttribPointer(
 		1,
@@ -137,8 +134,6 @@ void Renderer::renderer(RenderingObject* _object)
 		0,
 		(void*)0
 	);
-
-
 	glBindBuffer(GL_ARRAY_BUFFER, _object->normalbuffer);
 	glVertexAttribPointer(
 		2,
@@ -149,27 +144,13 @@ void Renderer::renderer(RenderingObject* _object)
 		(void*)0
 	);
 
-	glm::mat4 ProjectionMatrix = glm::perspective(glm::radians(45.0f), 4.0f / 3.0f, 0.1f, 100.0f);
-
-	glm::mat4 ViewMatrix = getCameraPosition();
-	glm::mat4 ModelMatrix = glm::mat4(1.0);
-
-	ModelMatrix = getMatrixTranslatePosition(ModelMatrix, _object);
-
-	glm::mat4 MVP = ProjectionMatrix * ViewMatrix*ModelMatrix;
-
-
-	glUniformMatrix4fv(_object->MatrixID, 1, GL_FALSE, &MVP[0][0]);
 	glDrawArrays(GL_TRIANGLES, 0, _object->vertices.size());
-
 	glDisableVertexAttribArray(0);
 	glDisableVertexAttribArray(1);
 	glDisableVertexAttribArray(2);
 
-
+	getExit();
 }
-
-
 
 void Renderer::Update(IUpdate *iupdate)
 {
@@ -195,8 +176,6 @@ void Renderer::objectShutdown(RenderingObject *_obj)
 	_obj->shutDown();
 }
 
-
-
 void Renderer::shutDown()
 {
 	for (int i = 0; i < objects.size(); i++)
@@ -207,7 +186,6 @@ void Renderer::shutDown()
 	glfwTerminate();
 }
 
-
 void Renderer::renderup()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -217,4 +195,10 @@ void Renderer::renderdown()
 {
 	glfwSwapBuffers(window);
 	glfwPollEvents();
+}
+
+void Renderer::getExit()
+{
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+		exit(0);
 }
