@@ -20,10 +20,7 @@ int main(void)
 	Renderer *renderer = Renderer::instance();
 	renderer->init();
 	
-	renderer->setXYZ(20.0f,2.0f,7.0f); //camera ½ÃÁ¡ ÀÌµ¿
-	
 	Obj*cube = new Obj();
-	
 	filemgr->loadObj(
 	cube,
 	"cube.obj",
@@ -35,7 +32,7 @@ int main(void)
 	renderer->addObject(cube);  
 	
 	Sphere *sphere = new Sphere();
-	sphere->setXYZ(0.0f, 2.0f, 1.0f); //¸ðµ¨ ÁÂÇ¥ÀÌµ¿
+	sphere->setXYZ(10.0f, 3.0f, 0.0f); //¸ðµ¨ ÁÂÇ¥ÀÌµ¿
 	renderer->addObject(sphere);
 
 	Obj* human = new Obj();
@@ -48,7 +45,7 @@ int main(void)
 		"20161677_È²Çö¿í_fs.shader"
 	);
 	
-	human->setXYZ(10.0f, -4.0f, 0.0f);
+	human->setXYZ(10.0f, 1.0f, 0.0f);
 	renderer->addObject(human);
 
 

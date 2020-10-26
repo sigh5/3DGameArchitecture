@@ -12,11 +12,6 @@ class Renderer :public ICleanUp, public ISetPosition,public IUpdate
 {
 private:
 	std::vector< RenderingObject*> objects;
-	float _camera_a;
-	float _camera_b;
-	float _camera_c;
-	
-
 public:
 	static Renderer* instance() {
 
@@ -28,7 +23,6 @@ public:
 public:
 	void init();
 	glm::mat4 getMatrixTranslatePosition(glm::mat4 Model, RenderingObject *obj);
-	glm::mat4 getCameraPosition()const; //camera 시점 이동
 	void addObject(RenderingObject *_object);
 	void draw();
 	void renderup();
@@ -36,7 +30,6 @@ public:
 	void objectShutdown(RenderingObject*_obj);
 
 public:
-	void getExit();
 	GLFWwindow* window;
 
 public:

@@ -57,28 +57,6 @@ void Renderer::init()
 void Renderer::setXYZ(float x, float y, float z)
 {
 	
-	_camera_a = x;
-	_camera_b = y;
-	_camera_c = z;
-
-}
-
-glm::mat4 Renderer::getCameraPosition() const
-{
-	float a, b, c = 0;
-	a = _camera_a;
-	b = _camera_b;
-	c = _camera_c;
-   
-	
-
-	glm::mat4 SunViewMatrix = glm::lookAt(
-		glm::vec3(a, b, c),
-		glm::vec3(0, 0, 0),
-		glm::vec3(0, 0, 0)
-	);
-
-	return SunViewMatrix;
 }
 
 glm::mat4 Renderer::getMatrixTranslatePosition(glm::mat4 Model, RenderingObject *obj)
@@ -149,7 +127,7 @@ void Renderer::renderer(RenderingObject* _object)
 	glDisableVertexAttribArray(1);
 	glDisableVertexAttribArray(2);
 
-	getExit();
+	InputKey::GetInstance()->getExitKey();
 }
 
 void Renderer::Update(IUpdate *iupdate)
@@ -197,8 +175,3 @@ void Renderer::renderdown()
 	glfwPollEvents();
 }
 
-void Renderer::getExit()
-{
-	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-		exit(0);
-}

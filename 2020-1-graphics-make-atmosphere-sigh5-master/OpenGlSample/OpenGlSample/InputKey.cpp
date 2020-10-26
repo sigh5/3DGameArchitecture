@@ -62,3 +62,9 @@ void InputKey::KeyBoard() {
 
 	lastTime = currentTime;
 }
+
+void InputKey::getExitKey()
+{
+	if (glfwGetKey(renderer->window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+		exit(0);
+}
