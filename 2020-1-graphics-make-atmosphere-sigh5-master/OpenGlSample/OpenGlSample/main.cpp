@@ -28,11 +28,11 @@ int main(void)
 	"20161677_황현욱_vs.shader",
 	"20161677_황현욱_fs.shader"
 );
-	cube->setXYZ(10.0f,5.0f,0.0f); //모델의 위치이동
+	cube->setXYZ(10.0f,0.0f,0.0f); //모델의 위치이동
 	renderer->addObject(cube);  
 	
 	Sphere *sphere = new Sphere();
-	sphere->setXYZ(10.0f, 3.0f, 0.0f); //모델 좌표이동
+	sphere->setXYZ(5.0f, 0.0f, 0.0f); //모델 좌표이동
 	renderer->addObject(sphere);
 
 	Obj* human = new Obj();
@@ -45,9 +45,20 @@ int main(void)
 		"20161677_황현욱_fs.shader"
 	);
 	
-	human->setXYZ(10.0f, 1.0f, 0.0f);
+	human->setXYZ(6.0f, 0.0f, 0.0f);
 	renderer->addObject(human);
 
+	Obj* Background = new Obj();
+
+	Background->setXYZ(20.0f, -11.0f, 10.0f);
+	filemgr->loadObj(
+		Background,
+		"Back.obj",
+		"moon.bmp",
+		"20161677_황현욱_vs.shader",
+		"20161677_황현욱_fs.shader"
+	);
+	renderer->addObject(Background);
 
 	NonRenderingObject *non_render_obj = new NonRenderingObject();
 

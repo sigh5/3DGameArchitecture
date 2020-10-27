@@ -5,6 +5,7 @@
 
 class RenderingObject:public Object
 {
+private:
 
 public:
 	GLuint VertexArrayID;
@@ -28,6 +29,8 @@ public:
 	float _Obj1PositionY;
 	float _Obj1PositionZ;
 
+public:
+	
 
 
 public:
