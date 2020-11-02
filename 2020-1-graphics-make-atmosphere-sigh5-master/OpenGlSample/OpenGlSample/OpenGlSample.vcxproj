@@ -382,6 +382,7 @@
     </ClInclude>
     <ClInclude Include="RenderingObject.h" />
     <ClInclude Include="Sphere.h" />
+    <ClInclude Include="Time.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="20161677_황현욱_fs.shader" />
@@ -538,6 +539,7 @@
     </ClCompile>
     <ClCompile Include="RenderingObject.cpp" />
     <ClCompile Include="Sphere.cpp" />
+    <ClCompile Include="Time.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

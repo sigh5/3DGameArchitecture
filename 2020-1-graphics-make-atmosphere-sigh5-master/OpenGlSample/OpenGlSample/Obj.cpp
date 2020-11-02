@@ -20,4 +20,7 @@ void Obj::setXYZ(float x, float y, float z) {
 	_Obj1PositionZ = z;
 
 }
+void Obj::Update(IUpdate *iupdate)
+{
 
+}

@@ -12,7 +12,7 @@
 #include "Sphere.h"
 #include "Obj.h"
 #include "NonRenderingObject.h"
-
+#include "Time.h"
 
 int main(void)
 {
@@ -63,19 +63,29 @@ int main(void)
 	NonRenderingObject *non_render_obj = new NonRenderingObject();
 
 
-	while (true)
-		{	
+	while (glfwGetKey(renderer->window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(renderer->window) == 0)
+	{
 		renderer->renderup();
-		renderer->draw();
-		renderer->Update(non_render_obj);
-		renderer->renderdown();
-		
+
+		if (Time::GetInstance()->IsFixedRendering())
+		{
+			renderer->Update(non_render_obj);
+			renderer->Update(cube);
 		}
+
+		renderer->draw();
+
+
+		renderer->renderdown();
+	}
+
 		
 	renderer->shutDown();
 	
 	delete sphere;
 	delete cube;
 	delete human;
+	delete non_render_obj;
+
 	return 0;
 }

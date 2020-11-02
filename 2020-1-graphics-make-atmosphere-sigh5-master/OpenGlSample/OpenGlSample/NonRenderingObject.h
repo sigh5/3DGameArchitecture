@@ -1,8 +1,8 @@
 #pragma once
 #include "Object.h"
-#include "IUpdate.h"
 
-class NonRenderingObject :public Object, public IUpdate
+
+class NonRenderingObject :public Object
 {
 
 public:

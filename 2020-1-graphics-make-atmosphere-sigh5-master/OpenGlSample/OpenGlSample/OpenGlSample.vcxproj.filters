@@ -810,6 +810,7 @@
     <ClInclude Include="InputKey.h">
       <Filter>헤더파일2\오브젝트</Filter>
     </ClInclude>
+    <ClInclude Include="Time.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="glm\detail\func_common.inl">
@@ -1243,6 +1244,9 @@
     </ClCompile>
     <ClCompile Include="InputKey.cpp">
       <Filter>소스 파일\오브젝트</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
