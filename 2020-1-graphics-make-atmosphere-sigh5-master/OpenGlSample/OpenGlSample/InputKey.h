@@ -27,7 +27,7 @@ public:
 	}
 
 	void setMousepos();
-	void getExitKey();
+	
 
 
 public:

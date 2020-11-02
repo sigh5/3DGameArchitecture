@@ -126,8 +126,6 @@ void Renderer::renderer(RenderingObject* _object)
 	glDisableVertexAttribArray(0);
 	glDisableVertexAttribArray(1);
 	glDisableVertexAttribArray(2);
-
-	InputKey::GetInstance()->getExitKey();
 }
 
 void Renderer::Update(IUpdate *iupdate)

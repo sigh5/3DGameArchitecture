@@ -13,7 +13,7 @@ Time::Time()
 	QueryPerformanceCounter(&_prevFrameCounter);
 
 	
-	_perFrame = _frameInfo.QuadPart / 60;
+	_perFrame = _frameInfo.QuadPart / 60; //60프레임 고정
 }
 
 
