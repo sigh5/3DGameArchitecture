@@ -3,7 +3,7 @@
 class IUpdate
 {
 public:
-	virtual void Update(IUpdate *iupdate)=0;
+	virtual void Update()=0;
 
 
 };

@@ -50,7 +50,7 @@ Sphere::Sphere()
 }
 
 
-void Sphere::Update(IUpdate *iupdate) 
+void Sphere::Update() 
 {
 
  }

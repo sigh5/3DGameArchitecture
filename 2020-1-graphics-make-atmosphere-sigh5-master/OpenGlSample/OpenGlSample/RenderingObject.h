@@ -5,7 +5,6 @@
 
 class RenderingObject:public Object
 {
-private:
 
 public:
 	GLuint VertexArrayID;
@@ -28,14 +27,16 @@ public:
 	float _Obj1PositionX;
 	float _Obj1PositionY;
 	float _Obj1PositionZ;
-
-public:
 	
+public:
+	RenderingObject();
 
 
 public:
 	virtual void shutDown() override {};
 	virtual void setXYZ(float x, float y, float z)override {};
-	virtual void Update(IUpdate *iupdate)override {};
+	virtual void Update()override {};
+	virtual void init() override {};
+	virtual void render() override {};
 
 };

@@ -363,6 +363,7 @@
     <ClInclude Include="glm\vec4.hpp" />
     <ClInclude Include="glm\vector_relational.hpp" />
     <ClInclude Include="ICleanUp.h" />
+    <ClInclude Include="IInit.h" />
     <ClInclude Include="include\GLFW\glfw3.h" />
     <ClInclude Include="include\GLFW\glfw3native.h" />
     <ClInclude Include="include\GL\eglew.h" />
@@ -370,6 +371,7 @@
     <ClInclude Include="include\GL\glxew.h" />
     <ClInclude Include="include\GL\wglew.h" />
     <ClInclude Include="InputKey.h" />
+    <ClInclude Include="IRender.h" />
     <ClInclude Include="ISetPosition.h" />
     <ClInclude Include="IUpdate.h" />
     <ClInclude Include="NonRenderingObject.h" />
@@ -381,6 +383,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="RenderingObject.h" />
+    <ClInclude Include="SampleNonRenderingObj.h" />
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="Time.h" />
   </ItemGroup>
@@ -538,6 +541,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="RenderingObject.cpp" />
+    <ClCompile Include="SampleNonRenderingObj.cpp" />
     <ClCompile Include="Sphere.cpp" />
     <ClCompile Include="Time.cpp" />
   </ItemGroup>

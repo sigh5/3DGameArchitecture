@@ -811,6 +811,15 @@
       <Filter>헤더파일2\오브젝트</Filter>
     </ClInclude>
     <ClInclude Include="Time.h" />
+    <ClInclude Include="IInit.h">
+      <Filter>헤더파일2\인터페이스</Filter>
+    </ClInclude>
+    <ClInclude Include="IRender.h">
+      <Filter>헤더파일2\인터페이스</Filter>
+    </ClInclude>
+    <ClInclude Include="SampleNonRenderingObj.h">
+      <Filter>헤더파일2\오브젝트</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="glm\detail\func_common.inl">
@@ -1247,6 +1256,9 @@
     </ClCompile>
     <ClCompile Include="Time.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SampleNonRenderingObj.cpp">
+      <Filter>소스 파일\오브젝트</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

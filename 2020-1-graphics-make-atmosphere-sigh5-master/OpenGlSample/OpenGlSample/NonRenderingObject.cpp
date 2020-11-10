@@ -1,13 +1,23 @@
 #include "NonRenderingObject.h"
+#include "Renderer.h"
 
+NonRenderingObject::NonRenderingObject()
+{
+	Renderer *renderer = Renderer::instance();
+	renderer->addNonRenderObject(this);
+}
 
-void NonRenderingObject::Update(IUpdate *iupdate)
+void NonRenderingObject::init()
 {
 
 }
 
+void NonRenderingObject::render()
+{
 
-void NonRenderingObject::setXYZ(float x, float y, float z)
+}
+
+void NonRenderingObject::Update()
 {
 
 }
@@ -17,5 +27,7 @@ void NonRenderingObject::shutDown()
 
 }
 
+void NonRenderingObject::setXYZ(float x, float y, float z)
+{
 
-
+}

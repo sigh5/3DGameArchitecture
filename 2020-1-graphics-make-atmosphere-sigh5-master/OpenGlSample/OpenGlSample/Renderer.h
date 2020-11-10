@@ -7,11 +7,14 @@
 #include <vector>
 
 class RenderingObject;
+class NonRenderingObject;
 
 class Renderer :public ICleanUp, public ISetPosition,public IUpdate
 {
 private:
-	std::vector< RenderingObject*> objects;
+	std::vector< RenderingObject*> renderObjList;
+	std::vector< NonRenderingObject*> nonrenderObjList;
+
 public:
 	static Renderer* instance() {
 
@@ -21,13 +24,12 @@ public:
 	}
 	
 public:
-	void init();
-	glm::mat4 getMatrixTranslatePosition(glm::mat4 Model, RenderingObject *obj);
-	void addObject(RenderingObject *_object);
-	void draw();
+	int init();	
+	void render();
 	void renderup();
 	void renderdown();
-	void objectShutdown(RenderingObject*_obj);
+	void addRenderObject(RenderingObject* _obj);
+	void addNonRenderObject(NonRenderingObject* _obj);
 
 public:
 	GLFWwindow* window;
@@ -35,10 +37,6 @@ public:
 public:
 	virtual void shutDown()override;
 	virtual void setXYZ(float x, float y, float z)override; 
-	virtual void Update(IUpdate *iupdate)override;
-
-private :
-	void renderer(RenderingObject* _object);  //드로우함수에서 다쓸려고 
-
+	virtual void Update()override;
 
 };

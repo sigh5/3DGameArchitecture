@@ -11,10 +11,9 @@
 #pragma comment(lib, "lib-vc2017/glew32.lib")
 #pragma comment(lib, "lib-vc2017/glfw3.lib")
 
-class Object;
+
 class RenderingObject;
 
-class Sphere;
 
 class FileManager {
 

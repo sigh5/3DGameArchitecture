@@ -13,54 +13,16 @@
 #include "Obj.h"
 #include "NonRenderingObject.h"
 #include "Time.h"
+#include "SampleNonRenderingObj.h"
 
 int main(void)
 {
 	FileManager *filemgr = FileManager::instance();
 	Renderer *renderer = Renderer::instance();
+	Obj* cube = new Obj();
+	SampleNonRenderingObj *nonObj = new SampleNonRenderingObj();
+
 	renderer->init();
-	
-	Obj*cube = new Obj();
-	filemgr->loadObj(
-	cube,
-	"cube.obj",
-	"star.bmp",
-	"20161677_황현욱_vs.shader",
-	"20161677_황현욱_fs.shader"
-);
-	cube->setXYZ(10.0f,0.0f,0.0f); //모델의 위치이동
-	renderer->addObject(cube);  
-	
-	Sphere *sphere = new Sphere();
-	sphere->setXYZ(5.0f, 0.0f, 0.0f); //모델 좌표이동
-	renderer->addObject(sphere);
-
-	Obj* human = new Obj();
-
-	filemgr->loadObj(
-		human,
-		"human_2.obj",
-		"star.bmp",
-		"20161677_황현욱_vs.shader",
-		"20161677_황현욱_fs.shader"
-	);
-	
-	human->setXYZ(6.0f, 0.0f, 0.0f);
-	renderer->addObject(human);
-
-	Obj* Background = new Obj();
-
-	Background->setXYZ(20.0f, -11.0f, 10.0f);
-	filemgr->loadObj(
-		Background,
-		"Back.obj",
-		"moon.bmp",
-		"20161677_황현욱_vs.shader",
-		"20161677_황현욱_fs.shader"
-	);
-	renderer->addObject(Background);
-
-	NonRenderingObject *non_render_obj = new NonRenderingObject();
 
 
 	while (glfwGetKey(renderer->window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(renderer->window) == 0)
@@ -69,11 +31,10 @@ int main(void)
 
 		if (Time::GetInstance()->IsFixedRendering())
 		{
-			renderer->Update(non_render_obj);
-			renderer->Update(cube);
+			renderer->Update();
 		}
 
-		renderer->draw();
+		renderer->render();
 
 
 		renderer->renderdown();
@@ -82,10 +43,10 @@ int main(void)
 		
 	renderer->shutDown();
 	
-	delete sphere;
+	delete nonObj;
 	delete cube;
-	delete human;
-	delete non_render_obj;
+
+	
 
 	return 0;
 }
