@@ -1,9 +1,9 @@
 #pragma once
 #include "Object.h"
 #include <vector>
+#include "CompositeObj.h"
 
-
-class RenderingObject:public Object
+class RenderingObject:public CompositeObj
 {
 
 public:
@@ -23,6 +23,17 @@ public:
 	GLuint uvbuffer;
 	GLuint normalbuffer;
 	GLuint LightID;
+
+	//Composite uses
+	float rotSpeed;
+	glm::mat4 Scale;
+	glm::vec3 scaleVec;
+	glm::vec3 rotVec;
+	glm::mat4 Rot;
+	glm::vec3 position;
+	glm::vec3 cameraPos;
+
+
 public:
 	float _Obj1PositionX;
 	float _Obj1PositionY;
@@ -38,5 +49,15 @@ public:
 	virtual void Update()override {};
 	virtual void init() override {};
 	virtual void render() override {};
+	
+	//object C
+	virtual void setPos(float x, float y, float z) {};
+	virtual void setRot(float speed, float x, float y, float z) {};
+	virtual void setScale(float x, float y, float z) {};
+	virtual void setCameraPos(float x, float y, float z) {};
+
+	//Composit C
+	virtual void add(Object* addObj)override {};
+
 
 };

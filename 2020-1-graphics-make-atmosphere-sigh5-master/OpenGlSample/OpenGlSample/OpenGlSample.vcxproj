@@ -115,6 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CompositeObj.h" />
     <ClInclude Include="FileManager.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
@@ -528,6 +529,7 @@
     <None Include="human_vs.shader" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CompositeObj.cpp" />
     <ClCompile Include="InputKey.cpp" />
     <ClCompile Include="main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>

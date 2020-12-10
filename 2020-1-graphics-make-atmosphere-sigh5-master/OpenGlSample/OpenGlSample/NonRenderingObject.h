@@ -1,8 +1,8 @@
 #pragma once
 #include "Object.h"
+#include "CompositeObj.h"
 
-
-class NonRenderingObject :public Object
+class NonRenderingObject :public CompositeObj
 {
 public:
 	NonRenderingObject();
