@@ -11,23 +11,34 @@ class CompositeObj :public Object
 public:
 	CompositeObj();
 	~CompositeObj();
-	virtual void init() override {};
+	virtual void init() override{};
 	virtual void render() override {};
-	virtual void Update() override {};
+	virtual void Update() override;
 	virtual void shutDown() override {};
 
 	//∫ª¿Œ∞≈
-	virtual void add(Object* addObj);
+	virtual void addComposite(CompositeObj* addObj);
 	
-	//Object≤® 
-	virtual void RotMatrix(glm::mat4 _rot)  override;
-	virtual void PosMatrix(glm::mat4 _pos)  override;
-	virtual void ScaleMatrix(glm::mat4 _scale) override;
-
+	CompositeObj* Parent;
+	glm::mat4 WorldTransform;
+	glm::mat4 Transform;
+	glm::mat4 WorldView;
+	glm::mat4 View;
 
 protected:
-	vector<Object*>* _Table;
-	glm::mat4 CompositRot;
-	glm::mat4 ComPositPos;
-	glm::mat4 ComPositScale;
+	vector<CompositeObj*>* composite;
+	float rotSpeed;
+	glm::mat4 Scale;
+	glm::vec3 scaleVec;
+	glm::vec3 rotVec;
+	glm::mat4 Rot;
+	glm::vec3 cameraPos;
+	glm::mat4 movePos;
+	glm::mat4 ProjectionMatrix;
+	glm::mat4 ViewMatrix;
+	glm::mat4 ModelMatrix;
+
+public:
+	glm::vec3 position;
+	
 };

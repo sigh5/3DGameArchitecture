@@ -36,12 +36,13 @@ void InputKey::KeyBoard() {
 
 	glm::vec3 up = glm::cross(right, direction);
 
-	if (glfwGetKey(renderer->window, GLFW_KEY_UP) == GLFW_PRESS) {
+	/*if (glfwGetKey(renderer->window, GLFW_KEY_UP) == GLFW_PRESS) {
 		position -= up * deltaTime * speed;
 	}
 	if (glfwGetKey(renderer->window, GLFW_KEY_DOWN) == GLFW_PRESS) {
 		position += up * deltaTime * speed;
-	}
+	}*/
+
 	if (glfwGetKey(renderer->window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
 		position -= right * deltaTime * speed;
 	}

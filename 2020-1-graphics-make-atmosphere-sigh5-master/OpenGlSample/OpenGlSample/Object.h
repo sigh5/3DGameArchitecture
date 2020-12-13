@@ -15,8 +15,6 @@ class Object :public ICleanUp, public ISetPosition,public IUpdate,public IInit,p
 public:
 
 	virtual ~Object() {};
-	virtual void RotMatrix(glm::mat4 _rot) = 0;
-	virtual void PosMatrix(glm::mat4 _pos) = 0;
-	virtual void ScaleMatrix(glm::mat4 _scale) = 0;
+	
 
 };

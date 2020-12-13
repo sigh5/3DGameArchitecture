@@ -1,9 +1,5 @@
 #define _CRT_SECURE_NO_WARNING
 
-#pragma comment(lib, "OpenGL32.lib")
-#pragma comment(lib, "lib-vc2017/glew32.lib")
-#pragma comment(lib, "lib-vc2017/glfw3.lib")
-
 #include "Object.h"
 #include "FileManager.h"
 #include "Renderer.h"

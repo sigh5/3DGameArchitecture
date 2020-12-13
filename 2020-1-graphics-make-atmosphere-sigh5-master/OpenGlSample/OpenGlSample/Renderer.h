@@ -11,6 +11,7 @@ class NonRenderingObject;
 
 class Renderer :public ICleanUp, public ISetPosition,public IUpdate
 {
+
 private:
 	std::vector< RenderingObject*> renderObjList;
 	std::vector< NonRenderingObject*> nonrenderObjList;
