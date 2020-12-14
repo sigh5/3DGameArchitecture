@@ -30,7 +30,7 @@ void Restart::setCameraPos(float x, float y, float z)
 void Restart::init()
 {
 	FileManager* filemgr = FileManager::instance();
-	filemgr->loadObj(this, "cube.obj", "restart.bmp", "20161677_황현욱_vs.shader", "20161677_황현욱_fs.shader");
+	filemgr->loadObj(this, "gg.obj", "restart.bmp", "20161677_황현욱_vs.shader", "20161677_황현욱_fs.shader");
 	this->setPos(10, 0, 0);
 	this->setCameraPos(0, 0, 0);
 	this->setScale(0, 0, 0);

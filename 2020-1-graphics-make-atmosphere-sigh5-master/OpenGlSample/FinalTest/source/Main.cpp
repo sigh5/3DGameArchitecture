@@ -16,9 +16,9 @@
 
 bool CheckCollision(CompositeObj* one, CompositeObj* two) 
 {
-	bool collisionX = one->position.x + 1.5 >= (two->position.x) / 2 &&
+	bool collisionX = one->position.x + 1.5 >= (two->position.x) / 1 &&
 		(two->position.x) / 2 + 1 >= one->position.x;
-	bool collisionY = one->position.y + 1.5 >= (two->position.y) / 2 &&
+	bool collisionY = one->position.y + 1.5 >= (two->position.y) / 1 &&
 		(two->position.y) / 2 + 1 >= one->position.y;
 	return collisionX && collisionY;
 }
@@ -49,7 +49,7 @@ int main(void)
 		++it
 		)
 	{
-		(*it)->setScale(0.2f, 0.2f, 0.2f);
+		(*it)->setScale(0.15f, 0.15f, 0.15f);
 	}
 
 	while (glfwGetKey(renderer->window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(renderer->window) == 0)
@@ -71,7 +71,7 @@ int main(void)
 		{
 			if (CheckCollision(player, (*it)))
 			{
-				player->setPos(0.0f, 0, 0);
+				player->setPos(40.0f, 40, 0);
 				player->setLive(false);
 				restart->setGameOver(false);
 			}
