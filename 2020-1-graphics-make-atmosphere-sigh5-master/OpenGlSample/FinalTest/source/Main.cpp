@@ -1,6 +1,7 @@
+#pragma comment(lib,"winmm.lib")
+
 #include "Renderer.h"
 #include "Time.h"
-
 
 #include "..//include/BackGround.h"
 #include "..//include/FallingObj.h"
@@ -27,6 +28,9 @@ int main(void)
 {
 	Renderer* renderer = Renderer::instance();
 	
+	PlaySound(TEXT("bgm.wav"), NULL, SND_ASYNC | SND_FILENAME | SND_LOOP);
+
+
 	Player* player = new Player();
 	BackGround* bg = new BackGround();
 	Restart* restart = new Restart();
